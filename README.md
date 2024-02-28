@@ -1023,15 +1023,53 @@ echo $res;
 
 ```php
 <?php
-$a = 13;
+$a = 100
+$b = 200
+$c = 300
 
-if ($a > 10) {
-  echo "Above 10";
-  if ($a > 20) {
-    echo " and also above 20";
-  } else {
-    echo " but not above 20";
+// Outer if statement
+if ($a > $b) {
+
+  // Inner if statement
+  if ($a > $c) {
+    // Print statement 1
+    print("$a is Greater");
   }
+
+  // Inner else statement
+  else {
+    // Print statement 2
+    print("$c is Greater");
+  }
+}
+
+// Outer else statement
+else {
+
+  // Inner if statement
+  if ($b > $c) {
+    // Print statement 3
+    print("$b is Greater");
+  }
+
+  // Inner else statement
+  else {
+    // Print statement 4
+    print("$c is Greater");
+  }
+}
+
+
+$number = 5;
+
+if ($number >= 0) {
+  if ($number == 0) {
+    print("Number is 0");
+  } else {
+    print("Number is greater than 0");
+  }
+} else {
+  print("Number is smaller than 0");
 }
 ?>
 ```
