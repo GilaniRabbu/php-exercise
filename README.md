@@ -1228,4 +1228,10 @@ switch ($day) {
 ?>
 ```
 
+### Alternative Syntax For Control Structures
+
+- PHP offers an alternative syntax for some of its control structures.
+- Namely, `if`, `while`, `for`, `foreach`, and `switch`.
+- In each case, the basic form of the alternate syntax is to change the opening brace to a colon (:) and the closing brace to `endif;`, `endwhile;`, `endfor;`, `endforeach;`, or `endswitch;`, respectively.
+
 ##
