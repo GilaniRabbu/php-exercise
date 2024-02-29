@@ -1234,4 +1234,37 @@ switch ($day) {
 - Namely, `if`, `while`, `for`, `foreach`, and `switch`.
 - In each case, the basic form of the alternate syntax is to change the opening brace to a colon (:) and the closing brace to `endif;`, `endwhile;`, `endfor;`, `endforeach;`, or `endswitch;`, respectively.
 
+```php
+<?php
+$Number = 6;
+
+if ($Number == 5):
+  echo "$Number equals 5";
+  echo PHP_EOL; // End Of Line (EOL)
+  echo "Some Text++";
+elseif ($Number == 6):
+  echo "$Number equals 6";
+  echo PHP_EOL;
+  echo "Some Text++";
+else:
+  echo "$Number is neither 5 nor 6";
+  echo PHP_EOL;
+  echo "Some Text++";
+endif;
+
+echo PHP_EOL;
+
+switch ($Number):
+  case 5:
+    echo "$Number equals 5";
+    break;
+  case 6:
+    echo "$Number equals 6";
+    break;
+  default:
+    echo "$Number is neither 5 nor 6";
+endswitch;
+?>
+```
+
 ##
