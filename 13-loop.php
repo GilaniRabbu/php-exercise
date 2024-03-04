@@ -37,4 +37,32 @@ $i = 0;
 a: $i++;
 echo $i . PHP_EOL;
 if ($i < 7) goto a;
+
+// ForEach Loop
+$season = array("Winter", "Spring", "Summer", "Fall");
+foreach ($season as $i) {
+  echo $i . "\n";
+}
+
+// Dynamic Array
+foreach (array('L', 'E', 'A', 'R', 'N', '-', 'P', 'H', 'P') as $element) {
+  echo $element;
+}
+
+echo PHP_EOL;
+
+// Multi-dimensional Array
+// Declare multi-dimensional array
+$arr = array();
+$arr[0][0] = "John ";
+$arr[0][1] = "Doe ";
+$arr[1][0] = "Colt ";
+$arr[1][1] = "Max";
+
+// Display multi-dimensional array elements through foreach loop
+foreach ($arr as $i) {
+  foreach ($i as $name) {
+    echo $name;
+  }
+}
 ?>
