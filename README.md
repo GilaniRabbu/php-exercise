@@ -1268,3 +1268,174 @@ endswitch;
 ```
 
 ##
+
+## PHP Functions
+
+- PHP has more than 1000 built-in functions, and in addition you can create your own custom functions.
+
+### PHP Built-in Functions
+
+- PHP has over 1000 built-in functions that can be called directly, from within a script, to perform a specific task.
+
+### PHP User Defined Functions
+
+- Besides the built-in PHP functions, it is possible to create your own functions.
+
+  - A function is a block of statements that can be used repeatedly in a program.
+  - A function will not execute automatically when a page loads.
+  - A function will be executed by a call to the function.
+
+- A user-defined function declaration starts with the keyword `function`.
+- A function name must start with a letter or an underscore.
+- Function names are NOT case-sensitive.
+- To call the function, just write its name followed by parentheses `()`.
+
+```php
+function myMessage()
+{
+  echo "Hello world!";
+}
+myMessage();
+
+// The function Outputs - "Hello world!".
+```
+
+### PHP Function Arguments
+
+- Information can be passed to functions through arguments. An argument is just like a variable.
+- Arguments are specified after the function name, inside the parentheses.
+- You can add as many arguments as you want, just separate them with a comma.
+
+```php
+function Name($fname, $lname, $year)
+{
+  echo $fname . " " . $lname . ". Born in " . $year;
+}
+Name("Murat", "Hakim", 1982);
+Name("John", "Doe", 1992);
+```
+
+### PHP Default Argument Value
+
+- If we call the function `setHeight()` without arguments it takes the default value as argument.
+
+```php
+function setHeight($minHeight = 65)
+{
+  echo "The height is : $minHeight";
+}
+setHeight(90);
+setHeight(); // will use the default value of 65
+setHeight(75);
+setHeight(80);
+```
+
+### PHP Functions - Returning values
+
+- To let a function return a value, use the `return` statement.
+
+```php
+function Sum($x, $y)
+{
+  $z = $x + $y;
+  return $z;
+}
+echo "5 + 10 = " . Sum(5, 10);
+echo "7 + 13 = " . Sum(7, 13);
+echo "2 + 14 = " . Sum(2, 14);
+```
+
+### Passing Arguments by Reference
+
+- In PHP, arguments are usually passed by value, which means that a copy of the value is used in the function and the variable that was passed into the function cannot be changed.
+- When a function argument is passed by reference, changes to the argument also change the variable that was passed in.
+- To turn a function argument into a reference, the `&` operator is used.
+
+```php
+function add_five(&$value)
+{
+  $value += 5;
+}
+$num = 2;
+add_five($num);
+echo $num; // 7
+```
+
+### Variable Number of Arguments
+
+- By using the `...` operator in front of the function parameter, the function accepts an unknown number of arguments.
+- This is also called a variadic function.
+- The variadic function argument becomes an array.
+
+```php
+function sumMyNumbers(...$x)
+{
+  $n = 0;
+  $len = count($x);
+  for ($i = 0; $i < $len; $i++) {
+    $n += $x[$i];
+  }
+  return $n;
+}
+$a = sumMyNumbers(5, 2, 6, 2, 7, 7);
+echo $a;
+```
+
+- You can only have one argument with variable length, and it has to be the last argument.
+- The variadic argument must be the last argument.
+
+```php
+function myFamily($lname, ...$fname)
+{
+  $txt = "";
+  $len = count($fname);
+  for ($i = 0; $i < $len; $i++) {
+    $txt = $txt . "Hi, $fname[$i] $lname.<br>";
+  }
+  return $txt;
+}
+$a = myFamily("Doe", "Jane", "John", "Joey");
+echo $a;
+```
+
+- If the variadic argument is not the last argument, you will get an error.
+
+### PHP is a Loosely Typed Language
+
+- PHP automatically associates a data type to the variable, depending on its value.
+- Since the data types are not set in a strict sense, you can do things like adding a string to an integer without causing an error.
+- **In PHP 7**, type declarations were added. This gives us an option to specify the expected data type when declaring a function, and by adding the `strict` declaration, it will throw a **"Fatal Error"** if the data type mismatches.
+- In the following example we try to send both a number and a string to the function without using `strict`.
+
+```php
+function addNumbers(int $a, int $b)
+{
+  return $a + $b;
+}
+echo addNumbers(5, "5 days");
+// since strict is NOT enabled "5 days" is changed to int(5), and it will return 10
+
+
+function sum(int $x, int $y, int $z)
+{
+  return $x + $y + $z;
+}
+echo sum("3", 12, 5); // 20
+// echo sum("c", 12, 5); // Fatal error
+
+
+function sum(float $x, float $y): float
+{
+  return $x + $y;
+}
+echo sum(3.5, 5.2); // 8.7
+
+
+function sum(int $x, int $y): int
+{
+  return $x + $y;
+}
+echo sum(3.5, 5.2); // 8
+```
+
+##
