@@ -1269,6 +1269,247 @@ endswitch;
 
 ##
 
+## PHP Loops
+
+- Loops are used to execute the same block of code again and again, as long as a certain condition is true.
+
+- In PHP, we have the following loop types:
+  - `while` - loops through a block of code as long as the specified condition is true.
+  - `do...while` - loops through a block of code once, and then repeats the loop as long as the specified condition is true.
+  - `for` - loops through a block of code a specified number of times.
+  - `foreach` - loops through a block of code for each element in an array.
+
+### PHP for Loop
+
+- The `for` loop - Loops through a block of code a specified number of times.
+- The `for` loop is used when you know how many times the script should run.
+
+```php
+// for loop
+for ($i = 0; $i <= 10; $i++) {
+  echo $i;
+}
+
+
+for ($i = 0; $i <= 100; $i+=10) {
+  echo $i;
+}
+
+
+// Nested for loop
+for ($i = 0; $i <= 10; $i++) {
+  echo PHP_EOL;
+  for ($j = 0; $j < $i; $j++) {
+    echo "*";
+  }
+}
+```
+
+#### The break Statement
+
+- With the `break` statement we can stop the loop even if the condition is still true.
+
+```php
+for ($i = 0; $i <= 10; $i++) {
+  if ($i == 3) break;
+  echo $i;
+}
+```
+
+#### The continue Statement
+
+- With the `continue` statement we can stop the current iteration, and continue with the next.
+
+```php
+for ($i = 0; $i <= 10; $i++) {
+  if ($i == 3) continue;
+  echo $i;
+}
+```
+
+### PHP while Loop
+
+- The `while` loop executes a block of code as long as the specified condition is true.
+
+```php
+// While Loop
+$i = 0;
+while ($i < 10) {
+  $i++;
+  echo $i . PHP_EOL;
+}
+
+
+// The break Statement
+$i = 1;
+while ($i < 6) {
+  if ($i == 4) break;
+  echo $i;
+  $i++;
+}
+
+
+// The continue Statement
+$i = 0;
+while ($i < 6) {
+  $i++;
+  if ($i == 3) continue;
+  echo $i;
+}
+
+
+// Alternative Syntax
+$i = 1;
+while ($i < 6):
+  echo $i;
+  $i++;
+endwhile;
+```
+
+- **Note:** remember to increment `$i`, or else the loop will continue forever.
+- The `while` loop does not run a specific number of times, but checks after each iteration if the condition is still true.
+- The condition does not have to be a counter, it could be the status of an operation or any condition that evaluates to either true or false.
+
+### PHP do while Loop
+
+- The `do...while` loop will always execute the block of code at least once, it will then check the condition, and repeat the loop while the specified condition is true.
+
+```php
+// Do While Loop
+$i = 0;
+do {
+  $i++;
+  echo $i . PHP_EOL;
+} while ($i < 10);
+
+
+// The break Statement
+$i = 1;
+do {
+  if ($i == 3) break;
+  echo $i;
+  $i++;
+} while ($i < 6);
+
+
+// The continue Statement
+$i = 0;
+do {
+  $i++;
+  if ($i == 3) continue;
+  echo $i;
+} while ($i < 6);
+```
+
+- **Note:** In a `do...while` loop the condition is tested AFTER executing the statements within the loop. This means that the `do...while` loop will execute its statements at least once, even if the condition is false. See example below.
+
+```php
+// Do While Loop
+$i = 7;
+do {
+  $i++;
+  echo $i . PHP_EOL;
+} while ($i < 6); // Output 8
+```
+
+- The code will be executed once, even if the condition is never true.
+
+### PHP foreach Loop
+
+- The `foreach` loop - Loops through a block of code for each element in an array or each property in an object.
+- The most common use of the `foreach` loop, is to loop through the items of an array.
+
+#### Keys and Values
+
+- The array above is an indexed array, where the first item has the key 0, the second has the key 1, and so on.
+- Associative arrays are different, associative arrays use named keys that you assign to them, and when looping through associative arrays, you might want to keep the key as well as the value.
+- This can be done by specifying both the key and value in the `foreach` definition.
+
+#### foreach Example
+
+```php
+$colors = array("red", "green", "blue", "yellow");
+foreach ($colors as $x) {
+  echo "$x <br>";
+}
+
+
+// Keys and Values
+$members = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+foreach ($members as $x => $y) {
+  echo "$x : $y <br>";
+}
+
+
+// The foreach Loop on Objects
+class Car {
+  public $color;
+  public $model;
+  public function __construct($color, $model) {
+    $this->color = $color;
+    $this->model = $model;
+  }
+}
+
+$myCar = new Car("red", "Volvo");
+foreach ($myCar as $x => $y) {
+  echo "$x: $y<br>";
+}
+
+
+// The break Statement
+$colors = array("red", "green", "blue", "yellow");
+foreach ($colors as $x) {
+  if ($x == "blue") break;
+  echo "$x <br>";
+}
+
+
+// The continue Statement
+$colors = array("red", "green", "blue", "yellow");
+foreach ($colors as $x) {
+  if ($x == "blue") continue;
+  echo "$x <br>";
+}
+
+
+// Alternative Syntax
+$colors = array("red", "green", "blue", "yellow");
+foreach ($colors as $x) :
+  echo "$x <br>";
+endforeach;
+```
+
+- For every loop iteration, the value of the current array element is assigned to the variable `$x`. The iteration continues until it reaches the last array element.
+
+#### Foreach Byref
+
+- By default, changing an array item will not affect the original array.
+
+```php
+$colors = array("red", "green", "blue", "yellow");
+
+foreach ($colors as $x) {
+  if ($x == "blue") $x = "pink";
+}
+
+var_dump($colors);
+```
+
+- BUT, by using the `&` character in the `foreach` declaration, the array item is assigned by reference, which results in any changes done to the array item will also be done to the original array.
+
+```php
+$colors = array("red", "green", "blue", "yellow");
+
+foreach ($colors as &$x) {
+  if ($x == "blue") $x = "pink";
+}
+
+var_dump($colors);
+```
+
+##
+
 ## PHP Functions
 
 - PHP has more than 1000 built-in functions, and in addition you can create your own custom functions.
