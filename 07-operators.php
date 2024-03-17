@@ -27,6 +27,23 @@ echo $num;
 $num1 = $num2 = 5;
 echo $num1, "\n", $num2;
 
+$n = 7;
+$m = $n++;
+echo $m, "\n", $n; // 7 8
+/*
+$m = $n++;
+$m = $n;
+$n = $n + 1;
+*/
+
+$m = ++$n;
+echo $m, "\n", $n; // 8 8
+/*
+$m = ++$n;
+$n = $n + 1;
+$m = $n;
+*/
+
 $txt1 = "Hello";
 $txt2 = " World!";
 echo $txt1 . $txt2; // Hello World!
