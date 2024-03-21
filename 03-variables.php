@@ -9,12 +9,12 @@ echo $task; // Write
 echo "\n";
 
 // Constants
-define("Age", 35); // Can't be redefined
-echo "My age is " . Age; // My age is 35
-echo "\n";
-echo constant("Age"); // 35
-echo "\n";
+define("a", 10);
+define("A", 15);
+define("name", "Mr Hakim");
 
-$constant = "constant";
-echo "I am {$constant('Age')} years old."; // I am 35 years old.
+echo a . "\n" . A . "\n" . name . "\n";
+
+const MyCar = "Volvo";
+echo MyCar;
 ?>
