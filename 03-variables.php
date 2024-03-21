@@ -13,7 +13,9 @@ define("a", 10);
 define("A", 15);
 define("name", "Mr Hakim");
 
-echo a . "\n" . A . "\n" . name . "\n";
+define("cars", ["BMW", "Audi", "Toyota"]); // Array
+
+echo a . "\n" . A . "\n" . name . "\n" . cars[0] . "\n";
 
 const MyCar = "Volvo";
 echo MyCar;
