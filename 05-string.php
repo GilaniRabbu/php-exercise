@@ -1,5 +1,6 @@
 <?php
 $name = "Tr Gilani";
+$city = "dhaka";
 
 # Length
 echo strlen($name) . "\n";
@@ -15,6 +16,9 @@ echo strtoupper($name) . "\n";
 
 # Lower Case
 echo strtolower($name) . "\n";
+
+# Capitalize
+echo ucfirst($city) . "\n";
 
 # Reverse a String
 echo strrev($name) . "\n";
